@@ -1,6 +1,7 @@
 ﻿using RLaunch;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,26 +22,41 @@ namespace RLaunchWPF {
     /// </summary>
     public partial class MainWindow : Window {
 
-        // public Game[] games = Array.Empty<Game>();
+        
 
         public MainWindow() {
             InitializeComponent();
             
-            if (!Directory.Exists("data/meta")) {
-                Directory.CreateDirectory("data/meta");
+            if (!Directory.Exists("data\\meta")) {
+                Directory.CreateDirectory("data\\meta");
             }
 
-            foreach (string file in Directory.GetFiles("data/meta")) {
-                Game game = Game.Load(file);
-                GameList.Items.Add(game); 
-            }
-
-
+            addGamesToList();
         }
 
         void addInstance_Click(object sender, RoutedEventArgs e) {
             Window1 addInst = new Window1();
             addInst.ShowDialog();
         }
+
+        void play_Click(object sender, RoutedEventArgs e) {
+            //var anonType = ((Button)sender).DataContext;
+            Button b = sender as Button;
+            Game g = b.DataContext as Game;
+            Process.Start(AppDomain.CurrentDomain.BaseDirectory + $"/data/games/{g.Name}{g.Ver}/"+g.Exe);
+        }
+
+        void addGamesToList() {
+
+            foreach (string file in Directory.GetFiles("data\\meta")) {
+                Game game = Game.Load(file);
+                
+                Uri uri = new Uri(AppDomain.CurrentDomain.BaseDirectory + "data/meta/" + game.Img, UriKind.Relative);
+                game.Img = BitmapFrame.Create(uri);
+                GameList.Items.Add(game);
+
+            }
+        }
+
     }
 }
