@@ -8,8 +8,9 @@
         Title="RLaunch" Height="500" Width="800" ResizeMode="NoResize">
     <Grid>
         <ToolBar HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="800" RenderTransformOrigin="0.5,0.44">
-            <Button Name="addInstance" Click="addInstance_Click" Margin="10,0,0,0" Content="Add Instance"/>
-            <Button Name="options" Content="Options" Margin="10,0,0,0"/>
+            <Button Name="AddInstance" Click="AddInstance_OnClick" Margin="10,0,0,0" Content="Add Instance"/>
+            <Button Name="Options" Content="Options" Click="Options_OnClick" Margin="10,0,0,0"/>
+            <Button Name="Refresh" Content="Refresh Game List" Click="Refresh_OnClick" Margin="10,0,0,0"/>
         </ToolBar>
         <ListView x:Name="GameList" Margin="10,30,10,10" >
             <ListView.View>
@@ -21,13 +22,22 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Name" Width="80" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Width="80" DisplayMemberBinding="{Binding Name}">
+                        <GridViewColumnHeader Name="NameColumnHeader" Content="Name" Click="NameColumnHeader_OnClick"/>
+                    </GridViewColumn>
                     <GridViewColumn Header="Version" Width="50" DisplayMemberBinding="{Binding Ver}"/>
-                    <GridViewColumn Header="Description" Width="450" DisplayMemberBinding="{Binding Desc}"/>
-                    <GridViewColumn Header="" Width="50">
+                    <GridViewColumn Header="Description" Width="450">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="play" Content="Play" Click="play_Click"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Desc}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="50">
+                        <GridViewColumnHeader Name="PlayButtonColumnHeader"   Click="Play_Column_OnClick"/>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="Play" Content="Play" Click="Play_OnClick"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

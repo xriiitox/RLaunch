@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,36 +28,55 @@ namespace RLaunchWPF {
         public MainWindow() {
             InitializeComponent();
             
-            if (!Directory.Exists("data\\meta")) {
-                Directory.CreateDirectory("data\\meta");
+            if (!Directory.Exists(@"data\meta")) {
+                Directory.CreateDirectory(@"data\meta");
             }
 
-            addGamesToList();
+            AddGamesToList();
         }
 
-        void addInstance_Click(object sender, RoutedEventArgs e) {
-            Window1 addInst = new Window1();
-            addInst.ShowDialog();
+        private void AddInstance_OnClick(object sender, RoutedEventArgs e) {
+            AddInstanceWindow a = new();
+            a.ShowDialog();
         }
 
-        void play_Click(object sender, RoutedEventArgs e) {
-            //var anonType = ((Button)sender).DataContext;
-            Button b = sender as Button;
-            Game g = b.DataContext as Game;
-            Process.Start(AppDomain.CurrentDomain.BaseDirectory + $"/data/games/{g.Name}{g.Ver}/"+g.Exe);
+        private void Options_OnClick(object sender, RoutedEventArgs e) {
+            OptionsWindow o = new();
+            o.ShowDialog();
         }
 
-        void addGamesToList() {
+        private void Refresh_OnClick(object sender, RoutedEventArgs e) {
+            GameList.Items.Clear();
+            AddGamesToList();
+        }
 
-            foreach (string file in Directory.GetFiles("data\\meta")) {
-                Game game = Game.Load(file);
-                
-                Uri uri = new Uri(AppDomain.CurrentDomain.BaseDirectory + "data/meta/" + game.Img, UriKind.Relative);
-                game.Img = BitmapFrame.Create(uri);
+        private void Play_OnClick(object sender, RoutedEventArgs e) {
+            var g = (sender as Button).DataContext as Game;
+            Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory + $@"{g.Dir}");
+            Process.Start(@$"{g.Exe}");
+            Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
+        }
+
+        private void AddGamesToList() {
+
+            foreach (var file in Directory.GetFiles(@"data\meta")) {
+                var game = Game.Load(file);
+
+                byte[] bitmap = new WebClient().DownloadData(game.Img.ToString());
+                game.Img = BitmapFrame.Create(new MemoryStream(bitmap), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
                 GameList.Items.Add(game);
 
             }
         }
 
+        private void NameColumnHeader_OnClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Why are you going around clicking on things?");
+        }
+
+        private void Play_Column_OnClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("You clicked me!");
+        }
     }
 }
