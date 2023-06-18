@@ -25,4 +25,17 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="availableGames\**" CopyToOutputDirectory="PreserveNewest" LinkBase="availableGames\" />
+    <None Update="availableGames\ADOM(ASCIIVersion)3.3.3.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <LinkBase>availableGames\</LinkBase>
+    </None>
+    <None Update="availableGames\DwarfFortressClassic50.08.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <LinkBase>availableGames\</LinkBase>
+    </None>
+  </ItemGroup>
+  
 </Project>

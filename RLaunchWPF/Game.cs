@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 
-namespace RLaunch {
+namespace RLaunchWPF {
     public class Game {
 
         public string Name { get; set; }
@@ -12,16 +12,14 @@ namespace RLaunch {
         public string Dir { get; set; }
 
         public object Img { get; set; }
-        public object ExImg { get; set; }
 
-        public Game(string name, string ver, string desc, string exe, string dir, string src, object img, object exImg) {
+        public Game(string name, string ver, string desc, string exe, string dir, string src, object img) {
             this.Name = name;
             this.Ver = ver;
             this.Desc = desc;
             this.Exe = exe;
             this.Src = src;
             this.Img = img;
-            this.ExImg = exImg;
             this.Dir = dir;
         }
 

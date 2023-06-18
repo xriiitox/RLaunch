@@ -1,0 +1,9 @@
+{
+  "Desc": "Angband is a complex single player dungeon simulation. A player (you!) creates a character, choosing from a variety of races and classes, and then plays that character over a period of days, weeks, even months.\nThe player will begin their adventure on the town level where they may acquire supplies, weapons, armor, and magical devices by buying from various shop owners. Then the player can descend into the Pits of Angband, where they will explore the many levels of the dungeon, gaining experience by killing fierce creatures, collecting powerful objects and valuable treasure, and returning to town occasionally to buy supplies. Eventually, as the player grows more experienced, they may attempt to win the game by defeating Morgoth, the Lord of Darkness.",
+  "Exe": "angband.exe",
+  "Dir": "data\\games\\Angband4.2.4\\Angband-4.2.4",
+  "Img": "https://img.utdstc.com/icon/cab/577/cab577c817c564d8ef36be742574a85b53920682311ce15f6f6094d3e70c44e6:200",
+  "Name": "Angband",
+  "Src": "https://github.com/angband/angband/releases/download/4.2.4/Angband-4.2.4-win.zip",
+  "Ver": "4.2.4"
+}

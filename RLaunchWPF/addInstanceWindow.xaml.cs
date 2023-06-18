@@ -1,23 +1,11 @@
-﻿using Newtonsoft.Json.Linq;
-using RLaunch;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Net;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Path = System.IO.Path;
+
 
 namespace RLaunchWPF
 {
@@ -50,7 +38,7 @@ namespace RLaunchWPF
 
             var game = GameListBox.SelectedItem as Game;
             DescText.Text = game.Desc;
-            byte[] bitmap = new WebClient().DownloadData(game.ExImg.ToString());
+            byte[] bitmap = File.ReadAllBytes(@$"availableGames\exImgs\{game.Name.Replace(" ","")}.png");
             ExampleImg.Source = BitmapFrame.Create(new MemoryStream(bitmap), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
 
         }
@@ -65,33 +53,29 @@ namespace RLaunchWPF
         private void DownloadInst_OnClick(object sender, RoutedEventArgs e)
         {
             if (GameListBox.SelectedItem == null) {
-                MessageBox.Show("Please select a game!");
+                MessageBox.Show("Please select a game!", "Error");
                 return;
             }
-            var game = GameListBox.SelectedItem as Game;
-            if (Directory.Exists($@"data\games\{game.Name}{game.Ver}"))
+            var game = (Game)GameListBox.SelectedItem;
+            if (Directory.Exists($@"data\games\{game.Name.Replace(" ","")}{game.Ver}") 
+                || File.Exists($@"data\meta\{game.Name.Replace(" ","")}{game.Ver}.json")) 
             {
-                MessageBox.Show("Game already exists!");
+                MessageBox.Show("Game already exists!", "Error");
                 return;
             }
             
             var client = new WebClient();
             client.DownloadFile(game.Src, @"data\games\game.zip");
-
-            Directory.CreateDirectory($@"data\games\{game.Name}{game.Ver}");
-            ZipFile.ExtractToDirectory(@$"data\games\game.zip", @$"data\games\{game.Name}{game.Ver}");
-
-            try {
-                File.Copy(@$"availableGames\{game.Name}{game.Ver}.json", $@"data\meta\{game.Name}{game.Ver}.json");
-            }
-            catch (Exception) {
-                MessageBox.Show("Game already exists!");
-            }
-
-            File.Delete(@"data\games\game.zip");
-            MessageBox.Show("Downloaded Game!\nRemember to refresh!");
             
-            this.Close();
+            ZipFile.ExtractToDirectory(@$"data\games\game.zip", @$"data\games\{game.Name.Replace(" ","")}{game.Ver}");
+            
+            File.Copy($@"availableGames\{game.Name.Replace(" ","")}{game.Ver}.json", $@"data\meta\{game.Name.Replace(" ","")}{game.Ver}.json");
+            
+            File.Delete(@"data\games\game.zip");
+            MessageBox.Show("Downloaded Game!", "Success!");
+            
+            DialogResult = true;
+            Close();
         }
     }
 }

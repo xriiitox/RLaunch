@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RLaunchWPF"
         mc:Ignorable="d"
         Title="Add Instance" Height="469" Width="800">
     <Grid>
@@ -18,9 +17,15 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Image x:Name="ExampleImg" HorizontalAlignment="Left" Height="144" Margin="449,36,0,0" VerticalAlignment="Top" Width="256"/>
-        <Button x:Name="DownloadInst" Content="Download Game" Click="DownloadInst_OnClick" Margin="405,388,37,10"/>
-        <TextBlock x:Name="DescText" HorizontalAlignment="Left" Margin="405,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="182" Width="358"/>
+        <Image x:Name="ExampleImg" HorizontalAlignment="Left" Height="240" Margin="425, 0,0,0" VerticalAlignment="Top" Width="320"/>
+        <Button x:Name="DownloadInst" Content="Download Selected Game" Click="DownloadInst_OnClick" Margin="405,388,37,10">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBlock x:Name="DescText" HorizontalAlignment="Left" Margin="395,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="182" Width="385"/>
 
     </Grid>
 </Window>

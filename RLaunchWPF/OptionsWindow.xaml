@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="Options" Height="450" Width="800">
     <Grid>
-        
+        <ListBox x:Name="OptionsListBox" Margin="10,41,400,10" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Img}" Width="50" Height="50"/>
+                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="RemoveInst" Content="Remove Selected Instance" Click="RemoveInst_OnClick" Margin="410,325,37,10" Height="50">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

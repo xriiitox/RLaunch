@@ -1,0 +1,9 @@
+{
+  "Desc": "Brogue is a single-player strategy game set in the halls of a mysterious and randomly-generated dungeon. The objective is simple enough -- retrieve the fabled Amulet of Yendor from the 26th level -- but the dungeon is riddled with danger. Horrifying creatures and devious, trap-ridden terrain await. Yet it is also riddled with weapons, potions, and artifacts of forgotten power. Survival demands strength and cunning in equal measure as you descend, making the most of what the dungeon gives you. You will make sacrifices, narrow escapes, and maybe even some friends along the way -- but will you be one of the lucky few to return alive?",
+  "Exe": "brogue.exe",
+  "Dir": "data\\games\\BrogueCE1.12\\BrogueCE-windows",
+  "Img": "https://cdn2.steamgriddb.com/file/sgdb-cdn/icon/95a372b63ab8641f092e77acc9bf468c.png",
+  "Name": "BrogueCE",
+  "Src": "https://github.com/tmewett/BrogueCE/releases/download/v1.12/BrogueCE-1.12-windows-x86_64.zip",
+  "Ver": "1.12"
+}

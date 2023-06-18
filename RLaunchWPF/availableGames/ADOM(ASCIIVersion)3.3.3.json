@@ -1,0 +1,9 @@
+{
+  "Desc": "Ancient Domains Of Mystery (ADOM) is an epic roguelike & RPG game, customizable to a wide variety of playing styles. Dive into mysteries created in more than a quarter century of development, explore a huge world and become a champion of order or chaos. Save the world of Ancardia or rule it with an iron fist... or chaos tentacle!",
+  "Exe": "adom.exe",
+  "Dir": "data\\games\\ADOM(ASCIIVersion)3.3.3\\adom",
+  "Img": "https://static.wikia.nocookie.net/ancardia/images/6/66/Icon_256x256.png",
+  "Name": "ADOM (ASCII Version)",
+  "Src": "https://www.adom.de/home/download/current/adom_windows_3.3.3.zip",
+  "Ver": "3.3.3"
+}

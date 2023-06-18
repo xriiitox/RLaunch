@@ -13,6 +13,11 @@
             <Button Name="Refresh" Content="Refresh Game List" Click="Refresh_OnClick" Margin="10,0,0,0"/>
         </ToolBar>
         <ListView x:Name="GameList" Margin="10,30,10,10" >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Image" Width="80">
@@ -22,22 +27,33 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Width="80" DisplayMemberBinding="{Binding Name}">
+                    <GridViewColumn Width="200">
                         <GridViewColumnHeader Name="NameColumnHeader" Content="Name" Click="NameColumnHeader_OnClick"/>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Version" Width="50" DisplayMemberBinding="{Binding Ver}"/>
-                    <GridViewColumn Header="Description" Width="450">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding Desc}"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Name}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Width="50">
+                    <GridViewColumn Header="Version" Width="50" DisplayMemberBinding="{Binding Ver}"/>
+                    <!-- <GridViewColumn Header="Description" Width="450"> -->
+                    <!--     <GridViewColumn.CellTemplate> -->
+                    <!--         <DataTemplate> -->
+                    <!--             <TextBlock TextWrapping="Wrap" Text="{Binding Desc}"/> -->
+                    <!--         </DataTemplate> -->
+                    <!--     </GridViewColumn.CellTemplate> -->
+                    <!-- </GridViewColumn> -->
+                    <GridViewColumn Width="250">
                         <GridViewColumnHeader Name="PlayButtonColumnHeader"   Click="Play_Column_OnClick"/>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="Play" Content="Play" Click="Play_OnClick"/>
+                                <Button Name="Play" Content="Play" Click="Play_OnClick" Width="200" Height="50" FontSize="18" FontFamily="Ubuntu">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="5"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

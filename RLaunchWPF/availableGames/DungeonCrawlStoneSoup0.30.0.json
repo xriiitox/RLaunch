@@ -1,0 +1,9 @@
+{
+  "Desc": "Dungeon Crawl Stone Soup is a free roguelike game of exploration and treasure-hunting in dungeons filled with dangerous and unfriendly monsters in a quest for the mystifyingly fabulous Orb of Zot.\n\nDungeon Crawl Stone Soup has diverse species and many different character backgrounds to choose from, deep tactical game-play, sophisticated magic, religion and skill systems, and a grand variety of monsters to fight and run from, making each game unique and challenging.",
+  "Exe": "crawl.exe",
+  "Dir": "data\\games\\DungeonCrawlStoneSoup0.30.0\\stone_soup-tiles-0.30",
+  "Img": "https://play-lh.googleusercontent.com/xjBAL2WuycE-WCZtpF-M2wQV-4MUnaca7xmir9dMWZnGYv0wygqh5OHEtvr9IuRQ4BY",
+  "Name": "Dungeon Crawl Stone Soup",
+  "Src": "https://github.com/crawl/crawl/releases/download/0.30.0/dcss-0.30.0-win32-tiles.zip",
+  "Ver": "0.30.0"
+}
