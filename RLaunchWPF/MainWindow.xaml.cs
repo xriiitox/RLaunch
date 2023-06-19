@@ -5,12 +5,13 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using AutoUpdaterDotNET;
 
 namespace RLaunchWPF {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window {
+    public partial class MainWindow {
 
         
 
@@ -20,6 +21,9 @@ namespace RLaunchWPF {
             if (!Directory.Exists(@"data\meta")) {
                 Directory.CreateDirectory(@"data\meta");
             }
+
+            AutoUpdater.InstalledVersion = new Version("0.1"); // Update this and Update.xml every release to make sure updating works correctly
+            AutoUpdater.Start("https://github.com/xriiitox/RLaunch/releases/latest/download/Update.xml");
 
             AddGamesToList();
         }

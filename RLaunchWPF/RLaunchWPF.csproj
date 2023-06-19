@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autoupdater.NET.Official" Version="1.8.3" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
@@ -27,15 +28,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <None Include="availableGames\**" CopyToOutputDirectory="PreserveNewest" LinkBase="availableGames\" />
-    <None Update="availableGames\ADOM(ASCIIVersion)3.3.3.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <LinkBase>availableGames\</LinkBase>
-    </None>
-    <None Update="availableGames\DwarfFortressClassic50.08.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <LinkBase>availableGames\</LinkBase>
-    </None>
+    <None Update="availableGames\**" CopyToOutputDirectory="PreserveNewest" LinkBase="availableGames\" />
   </ItemGroup>
   
 </Project>
