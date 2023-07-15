@@ -21,8 +21,11 @@ namespace RLaunchWPF {
             if (!Directory.Exists(@"data\meta")) {
                 Directory.CreateDirectory(@"data\meta");
             }
+            if (!Directory.Exists(@"data\games")) {
+                Directory.CreateDirectory(@"data\games");
+            }
 
-            AutoUpdater.InstalledVersion = new Version("0.2"); // Update this and Update.xml every release to make sure updating works correctly
+            AutoUpdater.InstalledVersion = new Version("0.2.1"); // Update this and Update.xml every release to make sure updating works correctly
             AutoUpdater.Start("https://github.com/xriiitox/RLaunch/releases/latest/download/Update.xml");
 
             AddGamesToList();
