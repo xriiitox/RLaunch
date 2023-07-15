@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <item>
-    <version>0.1</version>
+    <version>0.2</version>
     <url>https://github.com/xriiitox/RLaunch/releases/latest/download</url>
     <changelog>https://github.com/xriiitox/RLaunch/releases</changelog>
     <mandatory>false</mandatory>

@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.Compression;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -21,14 +22,14 @@ namespace RLaunchWPF
             AddGamesToList();
         }
 
-        private void AddGamesToList() {
+        private async void AddGamesToList() {
 
             foreach (var file in Directory.GetFiles("availableGames")) {
                 var game = Game.Load(file);
                 var client = new WebClient();
                 byte[] bitmap = client.DownloadData(game.Img.ToString());
                 game.Img = BitmapFrame.Create(new MemoryStream(bitmap), BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
-                GameListBox.Items.Add(game);
+                await GameListBox.Dispatcher.InvokeAsync(() => GameListBox.Items.Add(game));
 
             }
         }

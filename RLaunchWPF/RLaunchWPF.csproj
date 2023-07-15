@@ -18,6 +18,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="PublicServersWindow.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>PublicServersWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +33,26 @@
   
   <ItemGroup>
     <None Update="availableGames\**" CopyToOutputDirectory="PreserveNewest" LinkBase="availableGames\" />
+    <None Update="servers\AngbandLive.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <LinkBase>servers\</LinkBase>
+    </None>
+    <None Update="servers\Hardfought.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <LinkBase>servers\</LinkBase>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="servers\**" CopyToOutputDirectory="PreserveNewest" LinkBase="servers\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="PublicServersWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <XamlRuntime>Wpf</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   
 </Project>

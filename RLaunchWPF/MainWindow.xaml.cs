@@ -22,7 +22,7 @@ namespace RLaunchWPF {
                 Directory.CreateDirectory(@"data\meta");
             }
 
-            AutoUpdater.InstalledVersion = new Version("0.1"); // Update this and Update.xml every release to make sure updating works correctly
+            AutoUpdater.InstalledVersion = new Version("0.2"); // Update this and Update.xml every release to make sure updating works correctly
             AutoUpdater.Start("https://github.com/xriiitox/RLaunch/releases/latest/download/Update.xml");
 
             AddGamesToList();
@@ -80,6 +80,11 @@ namespace RLaunchWPF {
         private void Play_Column_OnClick(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("You clicked me!");
+        }
+
+        private void PublicServers_OnClick(object sender, RoutedEventArgs e) {
+            PublicServersWindow p = new();
+            p.ShowDialog();
         }
     }
 }

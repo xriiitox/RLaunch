@@ -1,0 +1,11 @@
+﻿{
+  "Games": [
+    "NetHack 3.6.7"
+  ],
+  "IP": "nethack.alt.org",
+  "Name": "NAO (nethack.alt.org)",
+  "Desc": "The nethack.alt.org public server.",
+  "SshUser": "nethack",
+  "Port": 22,
+  "ConnectionMethod": 0
+}
