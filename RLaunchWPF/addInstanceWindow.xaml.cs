@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.Compression;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -51,7 +52,7 @@ namespace RLaunchWPF
 
         }
 
-        private void DownloadInst_OnClick(object sender, RoutedEventArgs e)
+        private async void DownloadInst_OnClick(object sender, RoutedEventArgs e)
         {
             if (GameListBox.SelectedItem == null) {
                 MessageBox.Show("Please select a game!", "Error");
@@ -64,17 +65,20 @@ namespace RLaunchWPF
                 MessageBox.Show("Game already exists!", "Error");
                 return;
             }
-            
-            var client = new WebClient();
-            client.DownloadFile(game.Src, @"data\games\game.zip");
-            
-            ZipFile.ExtractToDirectory(@$"data\games\game.zip", @$"data\games\{game.Name.Replace(" ","")}{game.Ver}");
-            
-            File.Copy($@"availableGames\{game.Name.Replace(" ","")}{game.Ver}.json", $@"data\meta\{game.Name.Replace(" ","")}{game.Ver}.json");
-            
+
+            using (var client = new WebClient())
+            {
+                client.DownloadFileCompleted   += (s, e) => MessageBox.Show("Game downloaded.");;
+                client.DownloadProgressChanged += (s, e) => DownloadInst.Content = ($"Downloading {e.ProgressPercentage}%");
+                await client.DownloadFileTaskAsync(new Uri(game.Src), @"data\games\game.zip");
+            }
+
+            ZipFile.ExtractToDirectory(@"data\games\game.zip", @$"data\games\{game.Name.Replace(" ", "")}{game.Ver}");
+
+            File.Copy($@"availableGames\{game.Name.Replace(" ", "")}{game.Ver}.json", $@"data\meta\{game.Name.Replace(" ", "")}{game.Ver}.json");
+
             File.Delete(@"data\games\game.zip");
-            MessageBox.Show("Downloaded Game!", "Success!");
-            
+
             DialogResult = true;
             Close();
         }
