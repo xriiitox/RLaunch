@@ -14,6 +14,7 @@ im bad at markdown
 
 ## stuff that may happen eventually to this 
 
+* roguelike specific features lol
 * version selector per-game
 * variant selector for games like NetHack or DCSS (e.g. SLASHEM or bCrawl)
 * quick public server selection/connection for NetHack and similar games with ssh
