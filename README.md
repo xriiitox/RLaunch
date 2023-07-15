@@ -17,7 +17,7 @@ im bad at markdown
 * roguelike specific features lol
 * version selector per-game
 * variant selector for games like NetHack or DCSS (e.g. SLASHEM or bCrawl)
-* quick public server selection/connection for NetHack and similar games with ssh
+* ~~quick public server selection/connection for NetHack and similar games with ssh~~
 * actual settings menu and not just "delete installed games"
 * progress bar for downloads?
 
