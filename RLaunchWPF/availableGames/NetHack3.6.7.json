@@ -1,9 +1,0 @@
-{
-  "Desc": "What is NetHack?\nNetHack is a single player dungeon exploration game that runs on a wide variety of computer systems, with a variety of graphical and text interfaces all using the same game engine. Unlike many other Dungeons & Dragons-inspired games, the emphasis in NetHack is on discovering the detail of the dungeon and not simply killing everything in sight - in fact, killing everything in sight is a good way to die quickly. Each game presents a different landscape - the random number generator provides an essentially unlimited number of variations of the dungeon and its denizens to be discovered by the player in one of a number of characters: you can pick your race, your role, and your gender.",
-  "Exe": "nethackw.exe",
-  "Dir": "data\\games\\NetHack3.6.7",
-  "Img": "https://cdn2.steamgriddb.com/file/sgdb-cdn/icon/bd380c81db012b113b6ab112b847e52b.ico",
-  "Name": "NetHack",
-  "Src": "https://nethack.org/download/3.6.7/nethack-367-win-x86.zip",
-  "Ver": "3.6.7"
-}
